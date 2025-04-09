@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Weather Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #cce7ff;
+            padding: 50px;
+            text-align: center;
+        }
+        .weather-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .weather-icon {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌤️ Local Weather Dashboard</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city name" required />
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <div class="weather-box" style="margin-top: 30px;">
+            {% if weather.error %}
+                <p>{{ weather.error }}</p>
+            {% else %}
+                <h2>{{ weather.city }}</h2>
+                <p>🌡️ {{ weather.temperature }}°C</p>
+                <p>{{ weather.description }}</p>
+                <img class="weather-icon" src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon">
+            {% endif %}
+        </div>
+    {% endif %}
+</body>
+</html>
