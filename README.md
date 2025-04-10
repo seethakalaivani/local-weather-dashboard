@@ -24,17 +24,22 @@ Local Weather Dashboard (Django + MySQL)
 
 4. How to install and run
 
-a. Clone the GitHub repository (or download the ZIP)
-git clone https://github.com/your-username/weather-dashboard.git
+a. Clone the GitHub repository 
+
+git clone https://github.com/seethakalaivani/weather-dashboard.git
+
 cd weather-dashboard
 
 b. Set up a virtual environment
+
 python -m venv venv
 
- For Windows:
+For Windows:
+
 venv\Scripts\activate
 
 c. Install required Python packages
+
 pip install -r requirements.txt
 
 d. Configure your MySQL database
